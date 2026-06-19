@@ -1,0 +1,28 @@
+{
+  "name": "petfeeding",
+  "version": "1.0.0",
+  "description": "Sistema para calculo de alimento para mascotas",
+  "license": "ISC",
+  "author": "Giorgi Sw",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "petfeeding": "nodemon index.js",
+    "start":"node index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "bootstrap": "^5.3.8",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "multer": "^2.1.1",
+    "mysql2": "^3.22.4",
+    "pug": "^3.0.4",
+    "sequelize": "^6.37.8",
+    "sweetalert2": "^11.26.25"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,76 @@
+extends ./layouts/index
+block contenido
+    .container 
+        .row 
+                if alerta
+                    div#alerta.d-none(
+                        data-icon=alerta.icon
+                        data-title=alerta.title
+                        data-text=alerta.text
+                        data-cancelar=alerta.cancelar || ''
+                        data-vistaActual=alerta.vistaActual || ''
+                        data-redireccion=alerta.redireccion
+                    )
+
+                if perros && perros.length
+                    .perros-grid
+                        each perro in perros 
+                            .perro-card
+                                .perro-img-container
+                                    img.perro-img(src=`/mis_perros/imagen/${perro.id}`, alt=`Imagen de ${perro.nombre}`)
+
+                                .perro-card-body
+                                    h3.perro-nombre.mb-0 #{perro.nombre}
+
+                                    .perro-info
+                                        p 
+                                            span Raza:
+                                            |  #{perro.raza.raza}
+                                        p 
+                                            span Edad:
+                                            |  #{perro.edad} años
+                                        p 
+                                            span Peso:
+                                            |  #{perro.peso} kg
+
+                                        p 
+                                            span Esterilizado:
+                                            |    #{perro.esterilizado ? 'Si' : 'No'}
+
+                                    .alimento-box
+                                        h4 Alimento
+
+                                        if perro.croqueta
+                                            .croqueta-info
+                                                .croqueta-img-box
+                                                    img.croqueta-img(src=`/img/croquetas/${perro.croqueta.ruta}`, alt=`Imagen de croquetas ${perro.croqueta.nombre} ${perro.croqueta.tipo}`)
+
+                                                .croqueta-texto
+                                                    p.croqueta-nombre #{perro.croqueta.marca} #{perro.croqueta.tipo}
+                                                    p.croqueta-kcal #{perro.croqueta.kcal_kg} kcal/kg
+
+                                                    .mb-3
+                                                        label.form-label.fw-bold(for="alimento") Cantidad SUGERIDA, puedes modificarlo manualmente a gusto
+                                                        input.form-control.input-paws.text-center(
+                                                            type="decimal"
+                                                            id="alimento"
+                                                            name="alimento"
+                                                            value=`${perro.alimento}gr`
+                                                            
+                                                        )
+                                    .container 
+                                        .row 
+                                            .col-md-12
+                                                a.btn.btn-paws.btnAlimentar(href=`/alimentar_perro/${perro.id}` id=`btn-Alimentar${perro.id}`) 
+                                                    if estado === 'on'
+                                                        | Detener
+                                                    else 
+                                                        | Alimentar
+                                            .col-md-12        
+                                                .card-actions
+                                                    a.btn.btn-paws.btn-editar(href=`/editar/${perro.id}`) Editar
+                                                    a.btn.btn-paws.btn-eliminar(href=`/eliminar/${perro.id}`) Eliminar
+                else
+                    .sin-perros
+                        h3 No tienes perritos registrados todavía
+                        p Agrega tu primer perrito para calcular su alimentación diaria.   

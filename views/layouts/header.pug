@@ -1,0 +1,38 @@
+header
+    nav.navbar.navbar-expand-lg.navbar-paws.py-3
+        .container
+            a.navbar-brand.pw-navbar-brand.d-flex.align-items-center.rounded(href="/")
+                img.pw-logo(src="/img/logo.png", alt="logo petfeeding", height="55")
+
+            button.navbar-toggler.pw-navbar-toggler(
+                type="button",
+                data-bs-toggle="collapse",
+                data-bs-target="#navbarPetFeeding",
+                aria-controls="navbarPetFeeding",
+                aria-expanded="false",
+                aria-label="Abrir menú"
+            )
+                span.navbar-toggler-icon
+
+            #navbarPetFeeding.collapse.navbar-collapse
+                ul.navbar-nav.ms-auto.mb-2.mb-lg-0.gap-2
+                    li.nav-item
+                        a.nav-link.pw-nav-link(href="/") Inicio
+
+                    li.nav-item#agregarPerrito
+                        a.nav-link.pw-nav-link(href="/nuevo_perro") + Agregar Perrito
+
+                    li.nav-item#misPerritos
+                        a.nav-link.pw-nav-link(href="/mis_perros") Mis Perritos
+
+                    li.nav-item#btnRegistro
+                        a.nav-link.pw-nav-link(href="/usuario") Registro
+
+                    li.nav-item#btnLogin
+                        a.nav-link.pw-nav-link(href="/login") Iniciar Sesion
+
+                    li.nav-item#btnLogout
+                        a.nav-link.pw-nav-link(href=`/logout?vista=${vista}`) Cerrar Sesion
+
+                    if login 
+                        div#sesionExiste.d-none

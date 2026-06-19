@@ -1,0 +1,157 @@
+extends ./layouts/index
+block contenido 
+    if login
+        .container.position-relative.z-3.mt-3
+            .alert.alert-success.text-center.border-0(style="background-color: #F0FAF4; color: #2D7A4F; border-radius: 16px;")
+                h5.mb-0 ¡Hola! #[strong #{nombre}]
+
+    if alerta
+        div#alerta.d-none(
+            data-icon=alerta.icon
+            data-title=alerta.title 
+            data-text=alerta.text 
+            data-cancelar=alerta.cancelar || ''
+            data-vistaactual=alerta.vistaActual || ''
+            data-redireccion=alerta.redireccion
+        )
+
+    main.pw-hero.pw-hero-home.px-0
+        //- Contenido Central Dividido
+        .container.flex-grow-1.d-flex.align-items-center.mt-4.mt-lg-0.pb-5
+            .row.align-items-center.w-100
+                //- Columna Izquierda
+                .col-lg-6.mb-5.mb-lg-0.text-start.pe-lg-5
+                    h1.titulo-perruno.text-start.mb-4(style="font-size: 4rem; line-height: 1.1;")
+                        | Alimentación
+                        br
+                        | perfecta. Sin
+                        br
+                        | esfuerzo.
+                    p.hero-text-home(style="font-size: 1.25rem; color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 2.5rem; position: relative; z-index: 2;") 
+                        | Controla el dispensador de tu mejor amigo desde donde estés. Programa los horarios, ajusta las porciones exactas y asegúrate de que nunca le falten sus croquetas, todo de forma automática.
+
+                //- Columna Derecha
+                .col-lg-6.d-flex.justify-content-center.justify-content-lg-end.position-relative
+                    .card.card-paws(style="width: 100%; max-width: 420px; transform: rotate(3deg);")
+                        .card-body.p-4.p-md-5.text-center
+                            span.pw-badge.mb-4 🦴 Control Inteligente
+                            
+                            //- IMAGEN DEL PERRITO CORREGIDA (Icons8, súper confiable)
+                            img.pw-dog-svg.mb-3(src="https://img.icons8.com/fluency/120/dog.png" alt="Perrito animado" style="width: 100px; height: auto;")
+                            
+                            h3.mt-2(style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #4A3520;") ¡Crea tu cuenta!
+                            p(style="color: #8B6543; font-size: 0.95rem;") Regístrate y añade los datos de tu peludo para calcular su porción ideal.
+                            hr.pw-divider.mx-auto(style="width: 70%;")
+                            .pw-info-tip.text-start.mt-0.mb-4.justify-content-center
+                                span(style="font-size: 18px; flex-shrink: 0;") ⚙️
+                                span Registro rápido en #[strong menos de 2 minutos].
+                            
+                            //- BOTÓN ÚNICO (Sin cajita de texto)
+                            .d-grid
+                                if !login
+                                    a.btn.btn-paws.btn-lg(href="/usuario") Registro
+                                else
+                                    a.btn.btn-paws.btn-lg(href="/mis_perros") Ir a mi panel
+                                    
+                    div(style="position: absolute; top: -20px; right: 20px; font-size: 5rem; z-index: 3; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2)); animation: pw-wag 2s ease-in-out infinite alternate;") 🥣
+
+    //- SECCIÓN 2: Características del Dispensador
+    section#caracteristicas.py-5.bg-white
+        .container.py-5
+            .text-center.mb-5
+                span.pw-badge.mb-3.bg-white 💡 Beneficios
+                h2.fw-bold(style="color: #4A3520; font-family: 'Nunito', sans-serif; font-size: 2.5rem;") Diseñado para su bienestar
+                p.text-muted(style="font-size: 1.15rem;") Tecnología IoT aplicada al cuidado diario de tu mascota.
+            
+            .row.g-4.mt-4
+                .col-md-4.text-center
+                    img.mb-4(src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=80" alt="Control Remoto" style="width: 100%; height: 240px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);")
+                    h4.fw-bold(style="color: #FF5733; font-family: 'Nunito', sans-serif;") Control Remoto
+                    p(style="color: #8B6543;") Gestiona horarios y rutinas desde cualquier lugar usando la plataforma web. Nunca más te preocupes si llegas tarde a casa.
+                
+                .col-md-4.text-center
+                    img.mb-4(src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80" alt="Porciones Exactas" style="width: 100%; height: 240px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);")
+                    h4.fw-bold(style="color: #FF5733; font-family: 'Nunito', sans-serif;") Porciones Exactas
+                    p(style="color: #8B6543;") El mecanismo de hardware dispensa la cantidad precisa de croquetas en cada comida, previniendo la obesidad en tu mascota.
+                
+                .col-md-4.text-center
+                    img.mb-4(src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=400&q=80" alt="Monitoreo" style="width: 100%; height: 240px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);")
+                    h4.fw-bold(style="color: #FF5733; font-family: 'Nunito', sans-serif;") Monitoreo Continuo
+                    p(style="color: #8B6543;") Revisa el estado de la tolva y verifica a qué hora se sirvió el alimento. Todo el registro queda almacenado en la nube.
+
+    //- SECCIÓN 3: Software y Arquitectura
+    section#software.py-5(style="background-color: #FFF7ED;")
+        .container.py-5
+            .row.align-items-center.flex-row-reverse
+                .col-lg-6.mb-5.mb-lg-0
+                    img.img-fluid(src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard Web" style="border-radius: 24px; box-shadow: 0 12px 40px rgba(180,80,0,0.15); border: 8px solid white;")
+                
+                .col-lg-6.pe-lg-5
+                    span.pw-badge.mb-3.bg-white 💻 Plataforma Web
+                    h2.fw-bold.mb-4(style="color: #4A3520; font-family: 'Nunito', sans-serif; font-size: 2.5rem;") Gestión total desde el navegador
+                    
+                    ul.list-unstyled(style="color: #8B6543; font-size: 1.1rem; line-height: 1.6;")
+                        li.mb-3 #[strong 📊 Tablero de control:] Visualiza el historial de alimentación y el nivel de croquetas restante.
+                        li.mb-3 #[strong ⚙️ Arquitectura robusta:] Diseñado para procesar solicitudes en tiempo real y sincronizarse con el módulo físico al instante.
+                        li.mb-3 #[strong 🔐 Seguridad:] Acceso protegido para que solo tú puedas modificar las configuraciones de tu dispositivo.
+                    
+    //- SECCIÓN 4: Hardware
+    section#hardware.py-5.bg-white
+        .container.py-5
+            .row.align-items-center
+                .col-lg-6.mb-5.mb-lg-0
+                    img.img-fluid(src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80" alt="Placa IoT y Hardware" style="border-radius: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); border: 8px solid #FFF7ED;")
+                
+                .col-lg-6.ps-lg-5
+                    span.pw-badge.mb-3.bg-white ⚙️ Internet de las Cosas
+                    h2.fw-bold.mb-4(style="color: #4A3520; font-family: 'Nunito', sans-serif; font-size: 2.5rem;") Ingeniería física
+                    
+                    p(style="color: #8B6543; font-size: 1.15rem; line-height: 1.6;")
+                        | El dispensador no es solo una página web; es un sistema embebido diseñado para funcionar 24/7. 
+                    p(style="color: #8B6543; font-size: 1.15rem; line-height: 1.6;")
+                        | Mediante microcontroladores conectados a internet, el mecanismo físico se acciona automáticamente recibiendo los parámetros exactos desde nuestra base de datos. Una fusión perfecta entre bits y engranajes.
+
+    //- SECCIÓN 5: Galería Visual
+    section#galeria.py-5(style="background-color: #FFFBF7;")
+        .container.py-5
+            .text-center.mb-5
+                span.pw-badge.mb-3.bg-white 📸 Galería
+                h2.fw-bold(style="color: #4A3520; font-family: 'Nunito', sans-serif; font-size: 2.5rem;") Los peludos nos inspiran
+                p.text-muted(style="font-size: 1.15rem;") Un vistazo a quienes hacen que todo este desarrollo valga la pena.
+            
+            .row.g-3
+                .col-6.col-md-4
+                    div(style="overflow: hidden; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);")
+                        img.img-fluid(src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=600&q=80" alt="Perro feliz" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'")
+                .col-6.col-md-4
+                    div(style="overflow: hidden; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);")
+                        img.img-fluid(src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80" alt="Perro feliz" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'")
+                .col-6.col-md-4
+                    div(style="overflow: hidden; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);")
+                        img.img-fluid(src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?auto=format&fit=crop&w=600&q=80" alt="Perro feliz" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'")
+                .col-6.col-md-4
+                    div(style="overflow: hidden; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);")
+                        img.img-fluid(src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80" alt="Perro feliz" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'")
+                .col-6.col-md-4
+                    div(style="overflow: hidden; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);")
+                        img.img-fluid(src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80" alt="Perro feliz" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'")
+                .col-6.col-md-4
+                    div(style="overflow: hidden; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);")
+                        img.img-fluid(src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=600&q=80" alt="Perro feliz" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'")
+
+    //- SECCIÓN 6: El Equipo / Trabajo Terminal
+    section#proyecto.py-5(style="background-color: #FFF7ED;")
+        .container.py-5
+            .row.align-items-center
+                .col-lg-6.mb-5.mb-lg-0
+                    img.img-fluid(src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Equipo de Desarrollo" style="border-radius: 24px; box-shadow: 0 12px 40px rgba(180,80,0,0.15); border: 8px solid white;")
+                
+                .col-lg-6.ps-lg-5
+                    span.pw-badge.mb-3.bg-white 🛠️ Innovación y Desarrollo
+                    h2.fw-bold.mb-4(style="color: #4A3520; font-family: 'Nunito', sans-serif; font-size: 2.5rem;") Del aula a tu hogar
+                    
+                    p(style="color: #8B6543; font-size: 1.15rem; line-height: 1.6;")
+                        | Este proyecto nace como un trabajo aplicado para impulsado para resolver problemas reales.
+                    
+                    p(style="color: #8B6543; font-size: 1.15rem; line-height: 1.6;")
+                        | Combinamos la programación, el diseño de hardware, y el desarrollo de sistemas web para llevar esta idea desde los laboratorios y aulas de la ESCOM directamente a la vida diaria de las mascotas.

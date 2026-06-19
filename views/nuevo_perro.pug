@@ -1,0 +1,151 @@
+extends ./layouts/index
+block contenido 
+    if alerta
+        div#alerta.d-none(
+            data-icon=alerta.icon
+            data-title=alerta.title 
+            data-text=alerta.text 
+            data-cancelar=alerta.cancelar || ''
+            data-vistaActual=alerta.vistaActual || ''
+            data-redireccion=alerta.redireccion
+        )
+        
+    if editando 
+        div#editando.d-none
+    
+    main.container-fluid.px-0.position-relative(style="min-height: 100vh;")
+            header.pw-hero
+                include ./components/dog-svg.pug
+                h1.titulo-perruno.mb-1 ¡Registro de Perritos! 🐾
+                p.subtitulo-perruno.mb-0 Cuéntanos todo sobre tu mejor amigo peludo
+
+            .container.py-0
+                .row.justify-content-center
+                    .col-md-8.col-lg-6
+                        .card.card-paws.border-0
+                            .card-body.p-4.p-md-5
+
+                                span.pw-badge
+                                    | 🦴 Registro canino oficial
+
+                                if errores
+                                    each error in errores
+                                        .alert.alert-paws.text-center.rounded-3.mb-3= error.mensaje
+
+                                form(action=(editando ? `/editar/${id}` : "/nuevo_perro") method="POST" enctype="multipart/form-data")
+
+                                    p.section-label Datos personales
+
+                                    .mb-3
+                                        label.form-label.fw-bold(for="nombre") 🐶 Nombre del perrito
+                                        input.form-control.input-paws(
+                                            type="text"
+                                            id="nombre"
+                                            name="nombre"
+                                            value=nombre
+                                            placeholder="Ej. Firulais, Max, Luna..."
+                                            title="Solo se permiten letras y espacios"
+                                        )
+
+                                    .form-group.file-group
+                                        label.form-label(for="imagen") Foto del perro
+
+                                        .file-upload
+                                            input#imagen.file-input(type="file", name="imagen", accept=".jpg, .png, .webp, .jpeg")
+
+                                            label.file-label(for="imagen")
+                                                span.file-icon 🐾
+                                                span.file-text Seleccionar imagen
+
+                                            span.file-name#fileName Ningún archivo seleccionado
+
+                                    .mb-3
+                                        label.form-label.fw-bold(for="raza") 🏷️ Raza
+                                        select.form-select.input-paws(id="raza" name="raza")
+                                            option(value="" selected=(!raza)) Selecciona una raza...
+                                            each razaItem in razas
+                                                option(value=`${razaItem.id}` id=`${razaItem.id}` selected=(raza == razaItem.id)) #{razaItem.raza}
+
+                                    .mb-3
+                                        label.form-label.fw-bold(for="croqueta") 🦴 Croquetas
+                                        select.form-select.input-paws(id="croqueta" name="croqueta")
+                                            option(value="") Selecciona un producto
+                                            each croquetaItem in croquetas
+                                                option(value=`${croquetaItem.id}` id=`${croquetaItem.id}` selected=(croquetas_id == croquetaItem.id)) #{croquetaItem.marca} #{croquetaItem.tipo.toUpperCase().slice(0,1)}#{croquetaItem.tipo.slice(1)}
+
+                                    .row.mb-3
+                                        .col-md-6.mb-3.mb-md-0
+                                            label.form-label.fw-bold(for="years") 🎂 Edad (años)
+                                            input.form-control.input-paws(type="number" id="years" name="years" value=years placeholder="Ej. 3 años")
+
+                                        .col-md-6.mb-3.mb-md-0
+                                            label.form-label.fw-bold(for="meses") (meses)
+                                            input.form-control.input-paws(type="number"  id="meses" name="meses" value=meses placeholder="Ej. 3 meses")
+
+                                    .row.mb-3
+                                        .col-md-12.mb-3.mb-md-0
+                                            label.form-label.fw-bold(for="peso") ⚖️ Peso (kg)
+                                            input.form-control.input-paws(type="number" step="0.1" id="peso" name="peso" value=peso placeholder="Ej. 12.5")
+
+                                    hr.pw-divider.mt-0
+
+                                    p.section-label Salud y actividad
+
+                                    .mb-3.p-3.box-preguntas
+                                        p.fw-bold.mb-3 ¿Esta esterilizado?
+                                        input.radio-paws(type="radio" id="estSi" name="esterilizado" value='true' checked=(esterilizado == "1")) 
+                                        label.radio-label(for="estSi") Si
+
+                                        input.radio-paws(type="radio" id="estNo" name="esterilizado" value='false' checked=(esterilizado == "0")) 
+                                        label.radio-label(for="estNo") No
+
+                                    .mb-3.p-3.box-preguntas
+                                        p.fw-bold.mb-3 🩺 ¿Padece de alguna enfermedad relacionada con la alimentación?
+                                        .d-flex.gap-2
+                                            input.radio-paws(type="radio" id="enfSi" name="enfYN" value="si"  checked=(enfYN == "si"))
+                                            label.radio-label(for="enfSi") Sí
+                                            input.radio-paws(type="radio" id="enfNo" name="enfYN" value="no"  checked=(enfYN == "no"))
+                                            label.radio-label(for="enfNo") No
+
+                                    #contenedorEnfermedades(class=(enfYN == "si" ? "" : "d-none"))
+                                        each categoria in categorias 
+                                            h5= `• ${categoria}`
+                                                .row.card.my-2
+                                                    .card-body.form-check
+                                                        each enfermedad in enfermedadesForm
+                                                            if enfermedad.categoria === categoria
+                                                                .container
+                                                                    input.form-check-input(type="checkbox", id=enfermedad.id, name="enfermedades[]", value=enfermedad.nombre, checked=(enfermedades && enfermedades.includes(enfermedad.nombre)))
+                                                                    label.form-check-label #{enfermedad.nombre}
+
+                                    .mb-3.p-3.box-preguntas
+                                        p.fw-bold.mb-3 🏃 ¿Realiza actividad física relacionada con la alimentación?
+                                        .d-flex.gap-2
+                                            input.radio-paws(type="radio" id="actSi" name="actYN" value="si" checked=(actYN == "si"))
+                                            label.radio-label(for="actSi") Sí
+                                            input.radio-paws(type="radio" id="actNo" name="actYN" value="no" checked=(actYN == "no")) 
+                                            label.radio-label(for="actNo") No
+                                    
+                                    
+                                    #contenedorActividades(class=(actYN == "si" ? "" : "d-none"))
+                                        .row.card.my-2
+                                            .card-body.form-check
+                                                each actividad in actividadesForm
+                                                    .container
+                                                        input.form-check-input(type="checkbox", id=actividad.id, name="actividades[]", value=actividad.nombre checked=(actividades && actividades.includes(actividad.nombre)))
+                                                        label.form-check-label #{actividad.nombre} 
+
+                                    .pw-info-tip
+                                        span(style="font-size: 18px; flex-shrink: 0;") 💡
+                                        span Esta información nos ayuda a personalizar el plan nutricional ideal para tu perrito.
+                                
+                                    .d-grid.mt-4
+                                        button.btn.btn-paws.btn-lg#btnRegistrar(type="submit")  Registrar a mi perro
+
+                                .pw-bones-bar
+                                    .pw-bone#b1
+                                    .pw-bone#b2
+                                    .pw-bone#b3
+                                    .pw-bone#b4
+                                    .pw-bone#b5
+        

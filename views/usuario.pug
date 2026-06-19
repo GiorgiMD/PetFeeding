@@ -1,0 +1,77 @@
+extends ./layouts/index
+block contenido 
+    main.container-fluid.px-0.position-relative(style="min-height: 100vh;")
+        header.pw-hero
+            h1.titulo-perruno.mb-1 🐶 Registro 🐾
+        
+        .container.py-0
+                .row.justify-content-center
+                    .col-md-8.col-lg-6
+                        .card.card-paws.border-0
+                            .card-body.p-4.p-md-5
+
+                                if errores
+                                    each error in errores
+                                        .alert.alert-paws.text-center.rounded-3.mb-3= error.mensaje
+
+                                if alerta 
+                                    div#alerta.d-none(
+                                        data-icon=alerta.icon
+                                        data-title=alerta.title
+                                        data-text=alerta.text
+                                        data-cancelar=alerta.cancelar || ''
+                                        data-vistaActual=alerta.vistaActual || ''
+                                        data-redireccion=alerta.redireccion
+                                    )
+
+                                form(action="", method="POST")
+                                    .mb-3
+                                        label.form-label.fw-bold(for="nombre") Nombre
+                                        input.form-control.input-paws(
+                                            type="text"
+                                            id="nombre"
+                                            name="nombre"
+                                            value=nombre
+                                        )
+                                    
+
+                                    .mb-3
+                                        label.form-label.fw-bold(for="correo") Correo Electronico
+                                        input.form-control.input-paws(
+                                            type="email"
+                                            id="correo"
+                                            name="correo"
+                                            value=correo
+                                            placeholder="ejemplo@correo.com"
+                                        )
+
+                                    .mb-3
+                                        label.form-label.fw-bold(for="password") Contraseña
+
+                                        .password-wrapper
+                                            input.form-control.input-paws(
+                                                type="password"
+                                                id="password"
+                                                name="password"
+                                                value=password
+                                            )
+
+                                            input.d-none(
+                                                type="checkbox"
+                                                id="mostrarPassword"
+                                                name="mostrarPassword"
+                                            )
+
+                                            label.password-toggle(for="mostrarPassword")
+                                                include ./components/ojoabierto-svg  
+
+                                    .d-grid.mt-4
+                                        button.btn.btn-paws.btn-lg(type="submit")  Registrar
+
+                                .pw-bones-bar
+                                    .pw-bone#b1
+                                    .pw-bone#b2
+                                    .pw-bone#b3
+                                    .pw-bone#b4
+                                    .pw-bone#b5
+                            

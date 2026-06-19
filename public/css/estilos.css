@@ -1,0 +1,1354 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600&display=swap');
+
+/* ---- Base ---- */
+html,
+body {
+    min-height: 100%;
+}
+
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #FFF7ED;
+    background-image:
+        radial-gradient(circle at 15% 20%, #FFDBB5 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, #FFD4C2 0%, transparent 35%),
+        radial-gradient(circle at 80% 10%, #FFF0CC 0%, transparent 30%);
+    color: #4A3520;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-paws {
+    margin-top: auto;
+}
+
+/* Patrón de huellas de fondo */
+body::before {
+    content: '';
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; z-index: 0; opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cellipse cx='40' cy='48' rx='14' ry='10' fill='%23B85C00'/%3E%3Cellipse cx='25' cy='33' rx='6' ry='7' fill='%23B85C00'/%3E%3Cellipse cx='35' cy='28' rx='6' ry='7' fill='%23B85C00'/%3E%3Cellipse cx='46' cy='28' rx='6' ry='7' fill='%23B85C00'/%3E%3Cellipse cx='56' cy='33' rx='6' ry='7' fill='%23B85C00'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+}
+
+/* ---- Hero header ---- */
+.pw-hero {
+    background: linear-gradient(135deg, #FF7B2C 0%, #FF5733 50%, #E84B0F 100%);
+    border-radius: 0 0 50% 50% / 0 0 40px 40px;
+    padding: 36px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(255, 87, 51, 0.4);
+}
+
+/* Círculos decorativos en el hero */
+.pw-hero::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+}
+.pw-hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -50px;
+    width: 250px; height: 250px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+
+/* ---- Animación del perrito SVG ---- */
+.pw-dog-svg {
+    display: block;
+    margin: 0 auto 14px;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+    animation: pw-wag 1.2s ease-in-out infinite alternate;
+    position: relative; z-index: 2;
+}
+@keyframes pw-wag {
+    0%  { transform: rotate(-3deg) translateY(0px); }
+    100%{ transform: rotate(3deg) translateY(-5px); }
+}
+
+/* ---- Títulos del hero ---- */
+.titulo-perruno {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem; font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    position: relative; z-index: 2;
+}
+.subtitulo-perruno {
+    font-size: 1rem; color: rgba(255,255,255,0.88);
+    font-weight: 600; position: relative; z-index: 2;
+}
+
+/* ---- Tarjeta principal ---- */
+.card-paws {
+    background: #ffffff;
+    border-radius: 28px !important;
+    margin-top: -30px;
+    position: relative; z-index: 2;
+    box-shadow: 0 20px 60px rgba(180,80,0,0.12), 0 4px 16px rgba(0,0,0,0.06) !important;
+    border: none !important;
+    animation: pw-bounce-in 0.55s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes pw-bounce-in {
+    0%  { opacity: 0; transform: translateY(30px) scale(0.95); }
+    70% { transform: translateY(-6px) scale(1.01); }
+    100%{ opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Badge de sección ---- */
+.pw-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #FFF0E6; border: 1.5px solid #FFD4AA;
+    border-radius: 30px; padding: 4px 14px;
+    font-size: 12px; font-weight: 700; color: #C25A0A;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+}
+
+/* ---- Etiquetas de sección ---- */
+.section-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: #FF7B2C; margin-bottom: 10px;
+}
+
+/* ---- Inputs y selects ---- */
+.input-paws {
+    border-radius: 16px !important;
+    border: 2px solid #FFE2C8 !important;
+    background-color: #FFFBF7 !important;
+    color: #4A3520 !important;
+    padding: 12px 18px !important;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.input-paws::placeholder { color: #C4A882; }
+.input-paws:focus {
+    border-color: #FF7B2C !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(255,123,44,0.12) !important;
+    outline: none;
+}
+
+/* ---- Cajas Sí / No ---- */
+.box-preguntas {
+    background: linear-gradient(135deg, #FFF5EC 0%, #FFEDE0 100%);
+    border-radius: 20px;
+    border: 2px solid #FFD9BB !important;
+    padding: 18px 20px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+}
+.box-preguntas::before {
+    content: '';
+    position: absolute; top: -15px; right: -10px;
+    width: 70px; height: 70px; border-radius: 50%;
+    background: rgba(255,123,44,0.07);
+}
+.box-preguntas:hover {
+    border-color: #FF7B2C !important;
+    box-shadow: 0 4px 16px rgba(255,123,44,0.12);
+}
+
+/* ---- Radio buttons personalizados ---- */
+.radio-paws { display: none !important; }
+
+.radio-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #ffffff;
+    border: 2px solid #FFD9BB;
+    border-radius: 30px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 14px; font-weight: 700;
+    color: #8B6543;
+    transition: all 0.2s;
+    user-select: none;
+}
+.radio-label:hover {
+    border-color: #FF7B2C;
+    color: #FF7B2C;
+    background: #FFF8F3;
+}
+.radio-paws:checked + .radio-label {
+    border-color: #FF7B2C;
+    background: #FF7B2C;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255,123,44,0.3);
+}
+
+/* ---- Divisor decorativo ---- */
+.pw-divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, #FFD9BB 30%, #FFD9BB 70%, transparent);
+    border-radius: 2px;
+    margin: 24px 0;
+    border: none;
+}
+
+/* ---- Botón principal ---- */
+.btn-paws {
+    background: linear-gradient(135deg, #FF7B2C 0%, #FF5733 100%);
+    color: #ffffff;
+    border-radius: 20px !important;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem; font-weight: 900;
+    padding: 16px;
+    margin-right: 10px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px rgba(255,87,51,0.4), 0 2px 8px rgba(0,0,0,0.1);
+    position: relative; overflow: hidden;
+    letter-spacing: 0.2px;
+}
+.btn-paws::after {
+    content: '';
+    position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: pw-shine 2.5s ease-in-out infinite;
+}
+
+.btn-paws:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(255,87,51,0.5), 0 4px 12px rgba(0,0,0,0.12) !important;
+    color: #ffffff;
+    background: linear-gradient(135deg, #FF8C3C 0%, #FF6644 100%);
+}
+.btn-paws:active { transform: scale(0.98) !important; }
+
+.btn-pawsCancelar{
+    background: linear-gradient(135deg, #ff2c2c 0%, #ff3333 100%);
+    color: #4b2b16;
+    border-radius: 20px !important;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem; font-weight: 900;
+    padding: 16px;
+    margin-left: 10px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px rgba(255,87,51,0.4), 0 2px 8px rgba(0,0,0,0.1);
+    position: relative; overflow: hidden;
+    letter-spacing: 0.2px;
+}
+
+.btn-pawsCancelar::after {
+    content: '';
+    position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: pw-shine 2.5s ease-in-out infinite;
+}
+
+.btn-pawsCancelar:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(255, 51, 51, 0.5), 0 4px 12px rgba(0,0,0,0.12) !important;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff3c3c 0%, #ff4444 100%);
+}
+.btn-pawsCancelar:active { transform: scale(0.98) !important; }
+
+@keyframes pw-shine {
+    0%  { left: -100%; }
+    50% { left: 150%; }
+    100%{ left: 150%; }
+}
+
+/* ---- Info tip verde ---- */
+.pw-info-tip {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #F0FAF4; border: 1.5px solid #B8E8CC;
+    border-radius: 14px; padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 13px; color: #2D7A4F; font-weight: 600;
+    line-height: 1.5;
+}
+
+/* ---- Barra de progreso tipo huesitos ---- */
+.pw-bones-bar {
+    display: flex; justify-content: center; gap: 6px;
+    margin-top: 20px; padding: 12px;
+    background: #FFF5EC; border-radius: 16px;
+}
+.pw-bone {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #FFD4AA;
+    transition: background 0.3s, transform 0.3s;
+}
+.pw-bone.active { background: #FF7B2C; transform: scale(1.35); }
+
+/* ---- Alertas de error ---- */
+.alert-paws {
+    background: #FFF0EC;
+    border: 2px solid #FF7B2C;
+    border-radius: 16px;
+    color: #C84A0A;
+    font-weight: 600;
+}
+
+/* ---- Contenedores dinámicos: enfermedades y actividades ---- */
+#contenedorEnfermedades,
+#contenedorActividades {
+    background: linear-gradient(135deg, #FFF8F3 0%, #FFF0E6 100%);
+    border: 2px dashed #FFD4AA;
+    border-radius: 22px;
+    padding: 16px;
+    margin: -4px 0 20px;
+    box-shadow: 0 8px 24px rgba(180, 80, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    animation: pw-soft-appear 0.35s ease both;
+}
+
+/* Decoración suave tipo burbuja */
+#contenedorEnfermedades::before,
+#contenedorActividades::before {
+    content: '';
+    position: absolute;
+    top: -35px;
+    right: -35px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255, 123, 44, 0.08);
+    pointer-events: none;
+}
+
+#contenedorEnfermedades::after,
+#contenedorActividades::after {
+    position: absolute;
+    bottom: 10px;
+    right: 16px;
+    font-size: 34px;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+#contenedorEnfermedades::after {
+    content: '🩺';
+}
+
+#contenedorActividades::after {
+    content: '🏃';
+}
+
+/* Animación de entrada */
+@keyframes pw-soft-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Títulos de categorías en enfermedades */
+#contenedorEnfermedades h5,
+#contenedorActividades h5 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    color: #C25A0A;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 12px 0 8px;
+}
+
+/* Tarjetas internas */
+#contenedorEnfermedades .card,
+#contenedorActividades .card {
+    background: #FFFFFF;
+    border: 1.5px solid #FFE2C8 !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 14px rgba(180, 80, 0, 0.07);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Cuerpo de las tarjetas */
+#contenedorEnfermedades .card-body,
+#contenedorActividades .card-body {
+    padding: 12px !important;
+}
+
+/* Cada opción */
+#contenedorEnfermedades .container,
+#contenedorActividades .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 12px;
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFBF7;
+    border: 1.5px solid #FFE2C8;
+    border-radius: 14px;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.15s;
+}
+
+/* Hover en cada opción */
+#contenedorEnfermedades .container:hover,
+#contenedorActividades .container:hover {
+    background: #FFF5EC;
+    border-color: #FFB774;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 123, 44, 0.10);
+}
+
+/* Checkbox */
+#contenedorEnfermedades .form-check-input,
+#contenedorActividades .form-check-input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    border: 2px solid #FFD4AA;
+    box-shadow: none !important;
+}
+
+/* Checkbox seleccionado */
+#contenedorEnfermedades .form-check-input:checked,
+#contenedorActividades .form-check-input:checked {
+    background-color: #FF7B2C;
+    border-color: #FF7B2C;
+}
+
+/* Focus del checkbox */
+#contenedorEnfermedades .form-check-input:focus,
+#contenedorActividades .form-check-input:focus {
+    border-color: #FF7B2C;
+    box-shadow: 0 0 0 4px rgba(255, 123, 44, 0.14) !important;
+}
+
+/* Label */
+#contenedorEnfermedades .form-check-label,
+#contenedorActividades .form-check-label {
+    color: #6F4B2C;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1.3;
+}
+
+/* Cuando el checkbox está seleccionado, colorea el texto cercano */
+#contenedorEnfermedades .form-check-input:checked + .form-check-label,
+#contenedorActividades .form-check-input:checked + .form-check-label {
+    color: #FF7B2C;
+}
+
+/* Separación cuando aparecen después de una pregunta */
+.box-preguntas + #contenedorEnfermedades,
+.box-preguntas + #contenedorActividades {
+    margin-top: -6px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    #contenedorEnfermedades,
+    #contenedorActividades {
+        padding: 12px;
+        border-radius: 18px;
+    }
+
+    #contenedorEnfermedades .container,
+    #contenedorActividades .container {
+        padding: 9px 10px;
+    }
+
+    #contenedorEnfermedades .form-check-label,
+    #contenedorActividades .form-check-label {
+        font-size: 13px;
+    }
+}
+
+/* ---- Navbar principal ---- */
+.navbar-paws {
+    background: rgba(255, 251, 247, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1.5px solid #FFD4AA;
+    box-shadow: 0 8px 28px rgba(180, 80, 0, 0.10);
+    position: relative;
+    z-index: 10;
+}
+
+/* Detalle decorativo inferior */
+.navbar-paws::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #FF7B2C, #FF5733, transparent);
+    opacity: 0.8;
+}
+
+/* Marca / logo */
+.pw-navbar-brand {
+    background: #ffffff;
+    border: 1.5px solid #FFE2C8;
+    padding: 6px 12px;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 14px rgba(180, 80, 0, 0.09);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pw-navbar-brand:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(180, 80, 0, 0.14);
+}
+
+/* Logo */
+.pw-logo {
+    border-radius: 14px;
+    display: block;
+}
+
+/* Links del navbar */
+.pw-nav-link {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900 !important;
+    font-size: 14px;
+    color: #C25A0A !important;
+    background: #FFF5EC;
+    border: 2px solid #FFD9BB;
+    border-radius: 999px;
+    padding: 9px 18px !important;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s, border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brillito al pasar el mouse */
+.pw-nav-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -90%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    transition: left 0.35s;
+}
+
+.pw-nav-link:hover::after {
+    left: 130%;
+}
+
+.pw-nav-link:hover {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #FF7B2C 0%, #FF5733 100%);
+    border-color: #FF7B2C;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(255, 87, 51, 0.25);
+}
+
+/* Link activo, opcional */
+.pw-nav-link.active {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #FF7B2C 0%, #FF5733 100%);
+    border-color: #FF7B2C;
+    box-shadow: 0 6px 16px rgba(255, 87, 51, 0.24);
+}
+
+/* Botón hamburguesa */
+.pw-navbar-toggler {
+    border: 2px solid #FFD4AA !important;
+    border-radius: 14px;
+    background: #FFF5EC;
+    padding: 8px 10px;
+    box-shadow: none !important;
+}
+
+.pw-navbar-toggler:focus {
+    box-shadow: 0 0 0 4px rgba(255, 123, 44, 0.14) !important;
+}
+
+.pw-navbar-toggler .navbar-toggler-icon {
+    filter: invert(39%) sepia(85%) saturate(1331%) hue-rotate(354deg) brightness(99%) contrast(94%);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    #navbarPetFeeding {
+        background: #ffffff;
+        border: 1.5px solid #FFE2C8;
+        border-radius: 20px;
+        padding: 14px;
+        margin-top: 12px;
+        box-shadow: 0 10px 28px rgba(180, 80, 0, 0.10);
+    }
+
+    #navbarPetFeeding .navbar-nav {
+        gap: 8px !important;
+    }
+
+    .pw-nav-link {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-paws {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .pw-logo {
+        height: 48px;
+    }
+
+    .pw-navbar-brand {
+        padding: 5px 10px;
+    }
+}
+
+/* ---- Footer principal ---- */
+.footer-paws {
+    background: linear-gradient(135deg, #FFF8F3 0%, #FFEDE0 55%, #FFF5EC 100%);
+    border-top: 2px solid #FFD4AA;
+    box-shadow: 0 -10px 35px rgba(180, 80, 0, 0.10);
+    position: relative;
+    overflow: hidden;
+    color: #4A3520;
+}
+
+/* Círculos decorativos del footer */
+.footer-paws::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: -60px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: rgba(255, 123, 44, 0.09);
+    pointer-events: none;
+}
+
+.footer-paws::after {
+    content: '🐾';
+    position: absolute;
+    right: 28px;
+    bottom: 18px;
+    font-size: 70px;
+    opacity: 0.07;
+    pointer-events: none;
+}
+
+/* Logo */
+.footer-logo-link {
+    background: #ffffff;
+    border: 1.5px solid #FFE2C8;
+    border-radius: 20px;
+    padding: 8px 14px;
+    box-shadow: 0 6px 18px rgba(180, 80, 0, 0.10);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-logo-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(180, 80, 0, 0.15);
+}
+
+.footer-logo {
+    border-radius: 14px;
+    display: block;
+}
+
+/* Título y texto */
+.footer-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    color: #C25A0A;
+    letter-spacing: -0.3px;
+}
+
+.footer-text {
+    color: #6F4B2C;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Links */
+.footer-links {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    color: #C25A0A;
+    background: #ffffff;
+    border: 2px solid #FFD9BB;
+    border-radius: 999px;
+    padding: 8px 18px;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s, border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brillito */
+.footer-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -90%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    transition: left 0.35s;
+}
+
+.footer-link:hover::after {
+    left: 130%;
+}
+
+.footer-link:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #FF7B2C 0%, #FF5733 100%);
+    border-color: #FF7B2C;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(255, 87, 51, 0.25);
+}
+
+/* Línea divisoria */
+.footer-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #FFD9BB 30%, #FFD9BB 70%, transparent);
+    opacity: 1;
+}
+
+/* Copyright */
+.footer-copy {
+    color: #8B6543;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .footer-paws {
+        text-align: center;
+    }
+
+    .footer-link {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .footer-paws::after {
+        font-size: 54px;
+        right: 12px;
+        bottom: 8px;
+    }
+}
+
+.swal-paws-popup {
+    width: min(92vw, 520px) !important;
+    max-width: 520px !important;
+    box-sizing: border-box !important;
+
+    border-radius: clamp(22px, 5vw, 34px);
+    border: clamp(2px, 0.8vw, 4px) solid #8b4f28;
+    padding: clamp(1.4rem, 5vw, 2.4rem) clamp(1rem, 5vw, 2rem) !important;
+    overflow: hidden;
+    position: relative;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 107, 53, 0.12) 0 34px, transparent 35px),
+        radial-gradient(circle at 85% 75%, rgba(124, 200, 95, 0.14) 0 46px, transparent 47px),
+        linear-gradient(145deg, #fffaf2, #fff2e3);
+
+    box-shadow:
+        0 18px 45px rgba(75, 43, 22, 0.30),
+        inset 0 0 0 6px rgba(255, 255, 255, 0.55),
+        inset 0 0 0 9px rgba(139, 79, 40, 0.10);
+}
+
+.swal-paws-popup::before {
+    content: "🐾";
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    font-size: clamp(2.8rem, 11vw, 4.8rem);
+    opacity: 0.08;
+    transform: rotate(-18deg);
+}
+
+.swal-paws-popup::after {
+    content: "🦴";
+    position: absolute;
+    right: 18px;
+    bottom: 14px;
+    font-size: clamp(2.8rem, 11vw, 4.5rem);
+    opacity: 0.09;
+    transform: rotate(18deg);
+}
+
+.swal-paws-title {
+    color: #4b2b16 !important;
+    font-size: clamp(1.8rem, 7vw, 2.45rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.75);
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+}
+
+.swal-paws-title::before {
+    content: "🐶";
+    display: block;
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    margin-bottom: 0.35rem;
+}
+
+.swal-paws-text {
+    color: #6b3f22 !important;
+    font-size: clamp(1rem, 4.5vw, 1.25rem) !important;
+    font-weight: 500;
+    line-height: 1.35 !important;
+    margin-top: 0.4rem !important;
+}
+
+.swal-paws-icon {
+    width: clamp(70px, 22vw, 110px) !important;
+    height: clamp(70px, 22vw, 110px) !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 1rem !important;
+    border-width: clamp(4px, 1vw, 6px) !important;
+    box-shadow: 0 8px 25px rgba(124, 200, 95, 0.24);
+    background-color: rgba(255, 255, 255, 0.45);
+}
+
+.swal-paws-btn {
+    background: linear-gradient(135deg, #ff7a30, #ff4f2e);
+    color: #3a1f10;
+    border: 3px solid #7a3d1f;
+    border-radius: 22px;
+    padding: clamp(0.65rem, 3.5vw, 0.85rem) clamp(1.4rem, 7vw, 2rem);
+    font-size: clamp(1rem, 4.5vw, 1.25rem);
+    font-weight: 900;
+    box-shadow:
+        0 8px 0 #9f4425,
+        0 16px 24px rgba(94, 44, 20, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.swal-paws-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 10px 0 #9f4425,
+        0 20px 30px rgba(94, 44, 20, 0.32);
+}
+
+.swal-paws-btn:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 4px 0 #9f4425,
+        0 9px 16px rgba(94, 44, 20, 0.25);
+}
+
+.swal2-container {
+    padding: 1rem !important;
+    backdrop-filter: blur(3px);
+}
+
+@media (max-width: 420px) {
+    .swal-paws-popup {
+        width: 90vw !important;
+        padding: 1.3rem 0.9rem !important;
+    }
+
+    .swal-paws-title {
+        font-size: 1.75rem !important;
+    }
+
+    .swal-paws-text {
+        font-size: 1rem !important;
+    }
+
+    .swal-paws-btn {
+        border-radius: 18px;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .input-paws {
+    padding-right: 3.8rem;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.25rem;
+    user-select: none;
+}
+
+/* ====== CONTENEDOR GENERAL DE CARDS ====== */
+
+.perros-grid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 430px));
+    gap: 2rem;
+    justify-content: center;
+    align-items: start;
+}
+
+
+/* ====== CARD PRINCIPAL ====== */
+
+.perro-card {
+    width: 100%;
+    max-width: 430px;
+
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #f3d7bd;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.13);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.perro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ====== IMAGEN DEL PERRO ====== */
+
+.perro-img-container {
+    width: 100%;
+    height: 240px;
+
+    background: #fff3e6;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.perro-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+
+/* ====== CUERPO DE LA CARD ====== */
+
+.perro-card-body {
+    padding: 1.3rem;
+    background: #ffffff;
+}
+
+.perro-nombre {
+    margin: 0 0 1.2rem;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #2f2420;
+    text-align: center;
+}
+
+
+/* ====== DATOS DEL PERRO ====== */
+
+.perro-info {
+    background: #fff8f1;
+    border-radius: 18px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.3rem;
+}
+
+.perro-info p {
+    margin: 0.55rem 0;
+    color: #4c3a31;
+    font-size: 1.1rem;
+}
+
+.perro-info span {
+    font-weight: 700;
+    color: #e86f20;
+}
+
+
+/* ====== SECCIÓN ALIMENTO ====== */
+
+.alimento-box {
+    background: #fff0df;
+    border-radius: 20px;
+    padding: 1.3rem;
+    margin-bottom: 1.3rem;
+    border: 1px solid #ffd0a3;
+}
+
+.alimento-box h4 {
+    margin: 0 0 1.2rem;
+    color: #2f2420;
+    text-align: center;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.croqueta-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/* ====== IMAGEN DE CROQUETAS ====== */
+
+.croqueta-img-box {
+    width: 100%;
+    height: 260px;
+
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 0.5rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.croqueta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    transform: scale(1.75);
+}
+
+
+/* ====== TEXTO DE CROQUETAS ====== */
+
+.croqueta-texto {
+    width: 100%;
+    text-align: center;
+}
+
+.croqueta-texto p {
+    margin: 0.35rem 0;
+}
+
+.croqueta-nombre {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2f2420;
+}
+
+.croqueta-tipo {
+    font-size: 1.1rem;
+    color: #6b5140;
+    text-transform: capitalize;
+}
+
+.croqueta-kcal {
+    font-size: 1.1rem;
+    color: #e86f20;
+    font-weight: 700;
+}
+
+
+/* ====== BOTONES ====== */
+
+.card-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-editar,
+.btn-eliminar {
+    flex: 1;
+    border: none;
+    padding: 0.95rem 1rem;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-editar {
+    background: linear-gradient(135deg, #ffb347, #ff7a1a);
+    box-shadow: 0 6px 14px rgba(255, 122, 26, 0.28);
+}
+
+.btn-eliminar {
+    background: linear-gradient(135deg, #ff5b5b, #d62828);
+    box-shadow: 0 6px 14px rgba(214, 40, 40, 0.28);
+}
+
+.btn-editar:hover,
+.btn-eliminar:hover {
+    transform: scale(1.03);
+    opacity: 0.94;
+}
+
+.btn-editar:active,
+.btn-eliminar:active {
+    transform: scale(0.98);
+}
+
+
+/* ====== CUANDO NO HAY PERROS ====== */
+
+.sin-perros {
+    width: min(90%, 600px);
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+
+    background: #fff8f1;
+    border-radius: 20px;
+    border: 1px solid #ffd0a3;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.sin-perros h3 {
+    margin-bottom: 0.6rem;
+    color: #2f2420;
+    font-size: 1.4rem;
+}
+
+.sin-perros p {
+    color: #6b5140;
+    font-size: 1rem;
+}
+
+
+/* ====== RESPONSIVE ====== */
+
+@media (max-width: 768px) {
+    .perros-grid {
+        grid-template-columns: minmax(300px, 410px);
+        padding: 0 1rem;
+        gap: 1.5rem;
+    }
+
+    .perro-card {
+        max-width: 410px;
+    }
+
+    .perro-img-container {
+        height: 225px;
+    }
+
+    .perro-card-body {
+        padding: 1.1rem;
+    }
+
+    .perro-nombre {
+        font-size: 1.7rem;
+    }
+
+    .croqueta-img-box {
+        height: 245px;
+    }
+
+    .croqueta-img {
+        transform: scale(1.7);
+    }
+}
+
+@media (max-width: 480px) {
+    .perros-grid {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+        padding: 0 0.8rem;
+    }
+
+    .perro-card {
+        max-width: 100%;
+    }
+
+    .perro-img-container {
+        height: 210px;
+    }
+
+    .perro-nombre {
+        font-size: 1.6rem;
+    }
+
+    .perro-info {
+        padding: 1rem 1.2rem;
+    }
+
+    .perro-info p {
+        font-size: 1rem;
+    }
+
+    .alimento-box {
+        padding: 1rem;
+    }
+
+    .croqueta-img-box {
+        height: 230px;
+    }
+
+    .croqueta-img {
+        transform: scale(1.75);
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .btn-editar,
+    .btn-eliminar {
+        width: 100%;
+    }
+}
+
+/* ====== INPUT DE FOTO DEL PERRO ====== */
+
+.file-group {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #3b2a20;
+}
+
+.file-upload {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    padding: 0.85rem 1.2rem;
+    border-radius: 16px;
+
+    background: linear-gradient(135deg, #ffb347, #ff7a1a);
+    color: #ffffff;
+
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    border: none;
+    box-shadow: 0 6px 14px rgba(255, 122, 26, 0.28);
+
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.file-label:hover {
+    transform: translateY(-2px);
+    opacity: 0.94;
+    box-shadow: 0 9px 18px rgba(255, 122, 26, 0.35);
+}
+
+.file-label:active {
+    transform: scale(0.98);
+}
+
+.file-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.file-text {
+    line-height: 1;
+}
+
+.file-name {
+    flex: 1;
+    min-width: 180px;
+
+    padding: 0.8rem 1rem;
+    border-radius: 14px;
+
+    background: rgba(255, 248, 241, 0.95);
+    border: 1px solid #ffd0a3;
+
+    color: #6b5140;
+    font-size: 0.95rem;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ====== RESPONSIVE ====== */
+
+@media (max-width: 480px) {
+    .file-upload {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .file-label {
+        width: 100%;
+    }
+
+    .file-name {
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+    }
+}

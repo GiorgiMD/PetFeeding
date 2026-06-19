@@ -1,0 +1,17 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title PetFeeding | #{pagina}
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600&display=swap")
+        link(rel="stylesheet", href="/bootstrap/css/bootstrap.css")
+        link(rel="stylesheet", href="/sweetalert2/sweetalert2.css")
+        link(rel="stylesheet", href="/css/estilos.css")
+    body(data-vista=vista) 
+        include header 
+        block contenido 
+        include footer
+        script(src="/bootstrap/js/bootstrap.js")
+        script(src="/sweetalert2/sweetalert2.js")
+        script(type="module" src="/js/main.js")

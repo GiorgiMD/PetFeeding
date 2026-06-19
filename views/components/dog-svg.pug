@@ -1,0 +1,62 @@
+svg.pw-dog-svg(width="140" height="130" viewBox="0 0 140 130" xmlns="http://www.w3.org/2000/svg")
+    //- sombra
+    ellipse(cx="70" cy="105" rx="34" ry="10" fill="rgba(0,0,0,0.10)")
+
+    //- cola
+    path(
+        d="M104 78 Q124 66 118 48 Q114 38 104 44"
+        stroke="#B86B3D"
+        stroke-width="8"
+        fill="none"
+        stroke-linecap="round"
+    )
+        animateTransform(
+            attributeName="transform"
+            type="rotate"
+            values="0 104 78; 10 104 78; 0 104 78; -10 104 78; 0 104 78"
+            dur="0.8s"
+            repeatCount="indefinite"
+        )
+
+    //- patas traseras
+    rect(x="46" y="78" width="10" height="24" rx="5" fill="#C97A45")
+    rect(x="84" y="78" width="10" height="24" rx="5" fill="#C97A45")
+
+    //- cuerpo
+    ellipse(cx="70" cy="72" rx="34" ry="24" fill="#D98A4E")
+
+    //- patas delanteras
+    //rect(x="58" y="76" width="10" height="28" rx="5" fill="#B86B3D")
+    //rect(x="72" y="76" width="10" height="28" rx="5" fill="#B86B3D")
+
+    //- cabeza
+    circle(cx="70" cy="42" r="26" fill="#D98A4E")
+
+    //- orejas
+    ellipse(cx="48" cy="35" rx="10" ry="18" fill="#9C5A32" transform="rotate(-20 48 35)")
+    ellipse(cx="92" cy="35" rx="10" ry="18" fill="#9C5A32" transform="rotate(20 92 35)")
+
+    //- cara / hocico
+    ellipse(cx="70" cy="52" rx="14" ry="10" fill="#F3C9A0")
+    ellipse(cx="64" cy="52" rx="7" ry="6" fill="#F3C9A0")
+    ellipse(cx="76" cy="52" rx="7" ry="6" fill="#F3C9A0")
+
+    //- ojos
+    circle(cx="60" cy="40" r="3.5" fill="#2F241D")
+    circle(cx="80" cy="40" r="3.5" fill="#2F241D")
+    circle(cx="61" cy="39" r="1" fill="white")
+    circle(cx="81" cy="39" r="1" fill="white")
+
+    //- nariz
+    ellipse(cx="70" cy="49" rx="4" ry="3" fill="#2F241D")
+
+    //- boca
+    path(d="M70 52 Q66 57 62 58" stroke="#8E4B35" stroke-width="2" fill="none" stroke-linecap="round")
+    path(d="M70 52 Q74 57 78 58" stroke="#8E4B35" stroke-width="2" fill="none" stroke-linecap="round")
+
+    //- lengua
+    ellipse(cx="70" cy="60" rx="4" ry="5" fill="#F07D92")
+
+    //- collar
+    rect(x="50" y="62" width="40" height="6" rx="3" fill="#4A90E2")
+    circle(cx="70" cy="69" r="3" fill="#FFD25A")
