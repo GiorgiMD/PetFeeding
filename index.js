@@ -1,5 +1,7 @@
 //INSTRUCCIONES
 
+//0. Instalar nodejs en tu computadora
+
 //1. Instalar MySQL en tu computadora
 
 //2. Ejecutar el comando "CREATE DATABASE petfeeding; en un gestor de base de datos"
