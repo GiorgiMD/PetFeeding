@@ -1,0 +1,202 @@
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: petfeeding
+-- ------------------------------------------------------
+-- Server version	8.0.46
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `actividades`
+--
+
+DROP TABLE IF EXISTS `actividades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `actividades` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(60) DEFAULT NULL,
+  `intensidad` varchar(60) DEFAULT NULL,
+  `factorActividad` decimal(10,0) DEFAULT NULL,
+  `descripcion` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `actividades`
+--
+
+LOCK TABLES `actividades` WRITE;
+/*!40000 ALTER TABLE `actividades` DISABLE KEYS */;
+INSERT INTO `actividades` VALUES (1,'Caminar','baja',1,'Paseos tranquilos o caminatas cortas.'),(2,'Correr','alta',2,'Carrera continua o trote intenso.'),(3,'Obstaculos','media',2,'Lanzar y recoger pelota varias veces.'),(4,'Nadar','alta',2,'Actividad acuática o ejercicio en alberca.'),(5,'Entrenamiento de obediencia','baja',1,'Sesiones de comandos, premios y concentración.');
+/*!40000 ALTER TABLE `actividades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `croquetas`
+--
+
+DROP TABLE IF EXISTS `croquetas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `croquetas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `marca` varchar(60) DEFAULT NULL,
+  `tipo` varchar(60) DEFAULT NULL,
+  `kcal_kg` int DEFAULT NULL,
+  `ruta` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `croquetas`
+--
+
+LOCK TABLES `croquetas` WRITE;
+/*!40000 ALTER TABLE `croquetas` DISABLE KEYS */;
+INSERT INTO `croquetas` VALUES (1,'Hill\'s Science Diet','adulto',3675,'hills_science_diet_adulto.png'),(2,'Hill\'s Science Diet','cachorro',3747,'hills_science_diet_cachorro.png'),(3,'Royal Canin','cachorro',3869,'royal_canin_cachorro.png'),(4,'Royal Canin','adulto',3616,'royal_canin_adulto.png'),(5,'Purina Pro Plan','adulto',3570,'proplan_adulto.png'),(6,'Purina Pro Plan','cachorro',3950,'proplan_cachorro.png'),(7,'Nupec','adulto',3600,'nupec_adulto.png'),(8,'Nupec','cachorro',3500,'nupec_cachorro.png'),(9,'Full Trust','adulto',3380,'full_trust_adulto.png'),(10,'Full Trust','cachorro',3530,'full_trust_cachorro.png'),(11,'Perfect Sense','adulto',3300,'perfect_sense_adulto.png'),(12,'Perfect Sense','cachorro',3500,'perfect_sense_cachorro.png'),(13,'Grand Pet','adulto',3950,'grand_pet_adulto.png'),(14,'Grand Pet','cachorro',3800,'grand_pet_cachorro.png'),(15,'Pedigree','adulto',3300,'pedigree_adulto.png'),(16,'Pedigree','cachorro',3600,'pedigree_cachorro.png'),(17,'Ganador','adulto',3310,'ganador_adulto.png'),(18,'Ganador','cachorro',3360,'ganador_cachorro.png'),(19,'Purina Dog Chow','adulto',3700,'dog_chow_adulto.png'),(20,'Purina Dog Chow','cachorro',3500,'dog_chow_cachorro.png'),(21,'Kirkland Signature','adulto',3653,'kirkland_adulto.png'),(22,'Kirkland Signature','cachorro',3761,'kirkland_cachorro.png'),(23,'Nucan','adulto',3500,'nucan_adulto.png'),(24,'Nucan','cachorro',3700,'nucan_cachorro.png'),(25,'Campeón','adulto',3400,'campeon_adulto.png'),(26,'Campeón','cachorro',3500,'campeon_cachorro.png');
+/*!40000 ALTER TABLE `croquetas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `enfermedades`
+--
+
+DROP TABLE IF EXISTS `enfermedades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `enfermedades` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(60) DEFAULT NULL,
+  `categoria` varchar(60) DEFAULT NULL,
+  `recomendacionGeneral` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `gravedad` varchar(60) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `enfermedades`
+--
+
+LOCK TABLES `enfermedades` WRITE;
+/*!40000 ALTER TABLE `enfermedades` DISABLE KEYS */;
+INSERT INTO `enfermedades` VALUES (1,'Sobrepeso','Control de peso','Controlar porciones, reducir premios y ajustar calorías diarias.','media','Condición en la que el perro tiene más peso del recomendado para su tamaño, edad y raza.'),(2,'Obesidad','Control de peso','Usar una dieta de control de peso y consultar al veterinario para calcular calorías.','alta','Acumulación excesiva de grasa corporal que puede afectar la movilidad, respiración y salud general del perro.'),(3,'Diabetes mellitus','Control de peso','Mantener horarios fijos de comida y dieta controlada bajo indicación veterinaria.','alta','Enfermedad metabólica donde el cuerpo no regula correctamente la glucosa en sangre.'),(4,'Desnutrición','Control de peso','Usar alimento completo y balanceado según edad y condición corporal.','alta','Estado causado por falta de nutrientes, calorías, proteínas, vitaminas o minerales necesarios.'),(5,'Pancreatitis','Digestiva','Evitar alimentos altos en grasa y consultar dieta baja en grasa con veterinario.','alta','Inflamación del páncreas que puede provocar dolor abdominal, vómitos, diarrea y pérdida de apetito.'),(6,'Gastritis','Digestiva','Evitar cambios repentinos de comida y alimentos condimentados.','media','Inflamación del estómago que puede causar vómito, náuseas, dolor abdominal o falta de apetito.'),(7,'Colitis','Digestiva','Mantener dieta estable y revisar ingredientes que puedan causar irritación intestinal.','media','Inflamación del colon que puede causar diarrea, molestias intestinales y evacuaciones frecuentes.'),(8,'Diarrea crónica','Digestiva','Identificar ingredientes problemáticos y evitar cambios rápidos de croqueta.','media','Problema digestivo persistente caracterizado por evacuaciones blandas o líquidas durante varios días o de forma recurrente.'),(9,'Estreñimiento','Digestiva','Aumentar hidratación y revisar el aporte de fibra en la dieta.','baja','Dificultad para evacuar que puede estar relacionada con poca fibra, baja hidratación o poca actividad física.'),(10,'Flatulencias excesivas','Digestiva','Revisar ingredientes, cambiar alimento gradualmente y evitar comidas pesadas.','baja','Producción frecuente de gases intestinales, generalmente asociada a intolerancias, cambios de alimento o mala digestión.'),(11,'Alergia alimentaria','Alergias y piel','Usar dieta de eliminación o alimento hipoalergénico bajo supervisión veterinaria.','media','Reacción del sistema inmune ante ciertos ingredientes del alimento, especialmente algunas proteínas.'),(12,'Intolerancia alimentaria','Alergias y piel','Evitar ingredientes que causen vómito, diarrea, gases o malestar.','media','Dificultad para digerir ciertos ingredientes, sin necesariamente involucrar una reacción alérgica.'),(13,'Dermatitis por alergia alimentaria','Alergias y piel','Revisar si la comezón o irritación coincide con ciertos alimentos.','media','Irritación o inflamación de la piel relacionada con una reacción adversa a ciertos alimentos.'),(14,'Otitis recurrente asociada a alergias','Alergias y piel','Consultar si las infecciones de oído se repiten junto con síntomas de alergia.','media','Infecciones o inflamaciones repetidas del oído que pueden estar relacionadas con alergias alimentarias.');
+/*!40000 ALTER TABLE `enfermedades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `perros`
+--
+
+DROP TABLE IF EXISTS `perros`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `perros` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `raza_id` int NOT NULL,
+  `edad` int NOT NULL,
+  `peso` decimal(10,0) NOT NULL,
+  `croquetas_id` int NOT NULL,
+  `enfermedades` json DEFAULT NULL,
+  `actividades` json DEFAULT NULL,
+  `usuario_id` int NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `alimento` decimal(10,0) NOT NULL,
+  `esterilizado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_usuario` (`usuario_id`),
+  KEY `croquetas_id` (`croquetas_id`),
+  KEY `raza_id` (`raza_id`),
+  CONSTRAINT `perros_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `perros_ibfk_2` FOREIGN KEY (`croquetas_id`) REFERENCES `croquetas` (`id`),
+  CONSTRAINT `perros_ibfk_3` FOREIGN KEY (`raza_id`) REFERENCES `razas` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `perros`
+--
+
+LOCK TABLES `perros` WRITE;
+/*!40000 ALTER TABLE `perros` DISABLE KEYS */;
+/*!40000 ALTER TABLE `perros` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `razas`
+--
+
+DROP TABLE IF EXISTS `razas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `razas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `raza` varchar(60) DEFAULT NULL,
+  `tamano` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `razas`
+--
+
+LOCK TABLES `razas` WRITE;
+/*!40000 ALTER TABLE `razas` DISABLE KEYS */;
+INSERT INTO `razas` VALUES (1,'Mestizo','variable'),(2,'Chihuahua','pequeno'),(3,'Xoloitzcuintle','variable'),(4,'Pastor Alemán','grande'),(5,'Labrador Retriever','grande'),(6,'Golden Retriever','grande'),(7,'Pug','pequeno'),(8,'Bulldog Inglés','mediano'),(9,'Bulldog Francés','pequeno'),(10,'Beagle','mediano'),(11,'Boxer','grande'),(12,'Rottweiler','grande'),(13,'Doberman','grande'),(14,'Schnauzer Miniatura','pequeno'),(15,'Schnauzer Mediano','mediano'),(16,'Schnauzer Gigante','grande'),(17,'Poodle Toy','pequeno'),(18,'Poodle Miniatura','pequeno'),(19,'Poodle Estándar','mediano'),(20,'Yorkshire Terrier','pequeno'),(21,'Shih Tzu','pequeno'),(22,'Maltés','pequeno'),(23,'Cocker Spaniel','mediano'),(24,'Border Collie','mediano'),(25,'Husky Siberiano','mediano'),(26,'Pitbull Terrier','mediano'),(27,'American Staffordshire Terrier','mediano'),(28,'Bull Terrier','mediano'),(29,'Dachshund','pequeno'),(30,'Basset Hound','mediano'),(31,'Dálmata','grande'),(32,'Gran Danés','gigante'),(33,'San Bernardo','gigante'),(34,'Akita Inu','grande'),(35,'Shiba Inu','pequeno'),(36,'Chow Chow','mediano'),(37,'Shar Pei','mediano'),(38,'Pastor Belga Malinois','grande'),(39,'Pastor Australiano','mediano'),(40,'Corgi Galés Pembroke','pequeno'),(41,'Boston Terrier','pequeno'),(42,'Jack Russell Terrier','pequeno'),(43,'Weimaraner','grande'),(44,'Pointer Inglés','grande'),(45,'Setter Irlandés','grande'),(46,'Cane Corso','grande'),(47,'Mastín Napolitano','gigante'),(48,'Bichón Frisé','pequeno'),(49,'Papillón','pequeno'),(50,'Pomerania','pequeno');
+/*!40000 ALTER TABLE `razas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) DEFAULT NULL,
+  `correo` varchar(60) DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'petfeeding'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-09-21 11:21:46

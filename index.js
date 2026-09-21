@@ -1,3 +1,24 @@
+//INSTRUCCIONES
+
+//1. Instalar MySQL en tu computadora
+
+//2. Ejecutar el comando "CREATE DATABASE petfeeding; en un gestor de base de datos"
+
+//3. Ejecutar los siguientes comandos en la terminal (ESTANDO UBICADO EN LA RAIZ DEL PROYECTO)
+//mysql -u root -p petfeeding < models/SQL/petfeeding.dump
+//npm install
+//npm run petfeeding
+
+//4. Abrir http://localhost:4000/ en el navegador
+
+//5.Primero registrarse
+
+//6. Iniciar sesion
+
+//7. Registrar un perrito en "Agregar Perrito"
+
+//8. Gestionar perritos en "Mis Perritos"
+
 import express from 'express'
 import router from './routes/routes.js'
 import db from './models/db.js'
